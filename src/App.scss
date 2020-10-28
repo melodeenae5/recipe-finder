@@ -4,3 +4,9 @@ $theme-colors: (
 );
 
 @import '~bootstrap/scss/bootstrap';
+
+.categories {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 150px);
+	grid-gap: 1rem;
+}

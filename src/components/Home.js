@@ -1,8 +1,15 @@
 import React from 'react';
 import Category from './Category';
+import { Button } from 'react-bootstrap';
 
-const Home = () => {
-	return <div>Hello world, this is the homepage</div>;
+const Home = ({ categories }) => {
+	return (
+		<div className='categories'>
+			{categories.map((category) => (
+				<Category label={category.label} />
+			))}
+		</div>
+	);
 };
 
 export default Home;

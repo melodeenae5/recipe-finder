@@ -1,5 +1,6 @@
+import React, { useState, useEffect } from 'react';
 import './App.scss';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import Home from './components/Home';
 import Results from './components/Results';
@@ -33,11 +34,40 @@ function App() {
 		{ name: 'vegan', label: 'Vegan', type: 'Health' },
 		{ name: 'vegetarian', label: 'Vegetarian', type: 'Health' },
 	];
+	const searchOptions = {
+		appID: process.env.REACT_APP_APP_ID,
+		key: process.env.REACT_APP_API_KEY,
+		api: 'https://api.edamam.com/search',
+	};
+	const [results, setResults] = useState([]);
+	const [lastSearch, setLastSearch] = useState('');
+	const [searchString, setSearchString] = useState('');
+	function handleChange(event) {
+		setSearchString(event.target.value);
+	}
+	function search(event) {
+		event.preventDefault();
+		// getResults();
+		return <Redirect to={`/results/${searchString}`} />;
+	}
+	function getResults() {
+		const url = `${searchOptions.api}?q=${searchString}&app_id=${searchOptions.appID}&app_key=${searchOptions.key}`;
+
+		fetch(url)
+			.then((res) => res.json())
+			.then((resJson) => setResults([resJson.hits]))
+			.catch((err) => console.log(err));
+	}
 	return (
 		<div>
-			<SearchBar />
-			<Route path='/' exact component={Home} />
-			<Route path='/results/:search' component={Results} />
+			<SearchBar handleChange={handleChange} search={search} />
+			<Route path='/' exact render={() => <Home categories={categories} />} />
+			<Route
+				path='/results/:search'
+				render={(routerProps) => (
+					<Results match={routerProps.match} getResults={getResults} />
+				)}
+			/>
 			<Footer />
 		</div>
 	);
