@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, FormControl, Form, Button } from 'react-bootstrap';
 
-const SearchBar = ({ handleChange, search }) => {
+const SearchBar = ({ handleChange, search, searchString }) => {
 	return (
 		<>
 			<Navbar bg='primary' variant='dark'>

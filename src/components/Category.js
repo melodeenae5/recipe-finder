@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const Category = ({ label }) => {
+const Category = ({ label, getResults }) => {
 	return (
 		<div>
-			<Button variant='secondary'>{label}</Button>
+			<Button onClick={() => getResults(label)} variant='secondary'>
+				{label}
+			</Button>
 		</div>
 	);
 };
