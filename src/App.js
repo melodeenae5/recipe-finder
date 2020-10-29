@@ -72,35 +72,37 @@ function App() {
 				search={search}
 				searchString={searchString}
 				redirect={redirect}
-			/>
-			<Route
-				path='/'
-				exact
-				render={() => (
-					<Home
-						categories={categories}
-						redirect={redirect}
-						searchString={searchString}
-						getResults={getResults}
-					/>
-				)}
-			/>
-			<Route
-				path='/results/:search'
-				render={(routerProps) => (
-					<Results
-						match={routerProps.match}
-						getResults={getResults}
-						results={results}
-					/>
-				)}
-			/>
-			<Route
-				path='/recipe/:name'
-				render={(routerProps) => (
-					<Recipe match={routerProps.match} results={results} />
-				)}
-			/>
+			/>{' '}
+			<div className='content'>
+				<Route
+					path='/'
+					exact
+					render={() => (
+						<Home
+							categories={categories}
+							redirect={redirect}
+							searchString={searchString}
+							getResults={getResults}
+						/>
+					)}
+				/>
+				<Route
+					path='/results/:search'
+					render={(routerProps) => (
+						<Results
+							match={routerProps.match}
+							getResults={getResults}
+							results={results}
+						/>
+					)}
+				/>
+				<Route
+					path='/recipe/:name'
+					render={(routerProps) => (
+						<Recipe match={routerProps.match} results={results} />
+					)}
+				/>
+			</div>
 			<Footer />
 		</div>
 	);
