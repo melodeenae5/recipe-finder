@@ -4,6 +4,7 @@ import Recipe from './Recipe';
 import { CardColumns } from 'react-bootstrap';
 
 const Results = ({ match, getResults, results }) => {
+	
 	return (
 		<CardColumns>
 			{results.map((recipe) => (

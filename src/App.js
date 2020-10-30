@@ -43,7 +43,6 @@ function App() {
 		number: 100,
 	};
 	const [results, setResults] = useState([]);
-	// const [lastSearch, setLastSearch] = useState('');
 	const [searchString, setSearchString] = useState('');
 	const [redirect, setRedirect] = useState(false);
 	function handleChange(event) {
