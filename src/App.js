@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.scss';
-import { Route, Redirect, useHistory } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import Home from './components/Home';
 import Results from './components/Results';
